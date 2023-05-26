@@ -1,0 +1,2 @@
+#esta linea no funciona por ahora
+#lm(y~x)
