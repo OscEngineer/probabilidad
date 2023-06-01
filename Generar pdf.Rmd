@@ -1,10 +1,8 @@
 ---
-title: "02-Primer-markdown"
+title: "Generacion de pdfs"
 author: "os"
-date: "2023-05-24"
-output: 
-  pdf_document: 
-    keep_tex: yes
+date: "2023-05-31"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -30,4 +28,3 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-$$\int_0^1 x\ dx =\left.\frac{x^2}{2}\right]_0^1=\frac{1}{2} dx$$
