@@ -41,10 +41,21 @@ sqrt(2) -exp(-2)
 library(magic)
 magic(6)
 ```
-
-Cuando queremos a hacer la raiz cuadrada de 2, podemos en la misma linea:
-- En $\LaTeX$: $\sqrt{2}$
-- En `R` haciendo `r sqrt(2)`
-- La frase completa: $\sqrt{2}=$ `r sqrt(2)`
+### Cuando queremos hacer la raíz cuadrada de 2, podemos en la misma línea:
+- En LaTeX: $\sqrt{2}$
+- En R haciendo `r sqrt(2)`
+- La frase completa: $\sqrt{2} = \$`r sqrt(2)`$
 
 El numero $\pi$ empieza por `r pi`
+
+La raiz quinta de 32 es `r 32^(1/5)`, otra forma es
+$\sqrt[5]{32}= r 32^(1/5)$
+
+```{r prueba, results='hide', echo=FALSE}
+notas =c(3,5,7,7,9,10)
+media=mean(notas)
+n=length(notas)
+desv.tip= sd(notas)
+
+```
+Este ano he hecho $n=`r n`$ examenes, con una media $\overline{x}=$ `r round(media,2)` y una desviacion tipica de $s=$ `r round(desv.tip,2)`

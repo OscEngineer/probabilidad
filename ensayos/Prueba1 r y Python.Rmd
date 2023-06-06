@@ -1,0 +1,111 @@
+---
+title: "R Y Phyton"
+author: "os"
+date: "2023-06-05"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Reticulate es una interface en R para utilizar modulos y clases de python
+```{r}
+library(reticulate)
+#recomendacion primero invocar el python desde anaconda asi..
+
+#YA no es necesario darle la ruta del python porque la configure en 
+#tools -> Global Option -> python
+
+#use_python("c:/Users/mimo1/anaconda3")
+
+#importando una libreria de python y guardandola en os
+os <- import("os")
+```
+
+
+```{r}
+#py_install("nombre del paquete a instalar")
+
+## acedo con $ a la variable os, listdir sirve ppara listar ficheros y directorios de la caperta y con el punto . le decimo que liste todas las carpetas
+os$listdir(".")
+```
+
+```{r}
+source_python("add.py")
+add(3,4)
+
+```
+
+```{r}
+#importare a una variable el numpy
+
+np <- import("numpy",convert=FALSE)
+
+# creo un array que tiene los numeros de 1 hasta 4
+x <- np$array(c(1:4))
+#estoy llamando al afuncion cumsum (sumas acomuladas) del paquete numpy
+sum <- x$cumsum()
+print(sum)
+#convertir de objeto python a objeto r
+py_to_r(sum)
+
+```
+
+```{r}
+#invocar la yuda de python referente a un paquete o libreria o lo que sea
+py_help(os$chdir)
+```
+
+## Arrays
+```{r}
+a <- np_array(c(1:10), order = "C")
+a
+```
+```{r}
+datos <- iris
+#en esta linea aun estamos en R
+head(datos)
+## si quiero utilizar el dataset de los datos en python entonces desde la chunk de R pasamos los datos a python
+datos_py <- r_to_py(datos)
+```
+
+
+```{python}
+#ahora dentro de una chunk de python  utilizamos r. para acceder a #cualquier funcion metodo variable clase de R hayas exportado a python #atravez de la funcion r_to_py
+
+import numpy as np
+import pandas as pd
+
+#ahora reticulate nos da una variable facil de recordar r. , ahora es un #data set de pandas
+
+r.datos_py.head()
+
+```
+
+
+
+
+

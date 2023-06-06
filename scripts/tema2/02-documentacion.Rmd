@@ -1,0 +1,82 @@
+---
+title: "Documentacion de texto"
+author: "os"
+date: "2023-06-02"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Titulo 1
+
+## Titulo 2
+
+### Titulo 3
+
+#### Titulo 4
+
+##### Titulo 5
+
+###### Titulo 6
+
+esto es un texto normal, sin amohadillas, podemos escribir todo lo que queramos para acompanar el codigo en `R` como las formulas en \LaTeX.
+
+Esto seria una nueva linea de texto. veamos que para que separe los parrafos necesitamos almeno doble intro
+
+Para colocar *cursiva* podemos usar asterisco *esto seria un texto en cursiva* o bien usar una sola barra baj _esto tambien es cursiva_.
+
+Para colocar **negrita** podemos usar doble asterisco: **esto es negrita** o bien una linea doble barra baja __esto tambien es negrita__
+
+Los superindice van con el *sombrerito*: este curso vale por mi nota^2^
+
+Oscar^julian^
+
+Para tachar una palabra usamos una dible tilde virgulilla ~~Las matematicas son unn rollo~~
+
+para hacer un link clickeable hacemos esto: [ejemplo](https://google.com)
+
+para hacer enfasis
+
+endash: -- y entonces paso esto:
+
+
+emdash: --- como queria explicar
+
+elipsis:...
+
+ecuaciones en linea $S= \pi\cdot r^2$.
+
+imagen ![](../../teoria/Images/proba1dibujos/dice/1.png)
+
+asi se hace una linea divisoria
+
+***
+Aqui comienza otra cosa
+
+>Esto es una cita en bloque
+
+### Listas no ordenas
+
+* Item primero
+* Item Segundo
+  + Sub item 2.1
+  + Sub item 2.2
+* item tercero
+
+### Listas ordenadas
+1. Primer item
+2. Segundo item
+  +Sub item de 2
+  +Nuevo Sub item
+3. Tercer item
+1. Cuarto item
+1. Ultimo item
+
+Alumno     |   Nota  |    Edad
+-----------|---------|--------
+Mafe       | 3.5     |    26
+Juan       | 4.0     |    20
+maria      | 2.7     |    24
+pedro      | 4.5     |    22
