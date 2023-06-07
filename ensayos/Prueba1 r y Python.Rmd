@@ -32,6 +32,7 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ## Reticulate es una interface en R para utilizar modulos y clases de python
+
 ```{r}
 library(reticulate)
 #recomendacion primero invocar el python desde anaconda asi..
@@ -44,7 +45,6 @@ library(reticulate)
 #importando una libreria de python y guardandola en os
 os <- import("os")
 ```
-
 
 ```{r}
 #py_install("nombre del paquete a instalar")
@@ -80,10 +80,12 @@ py_help(os$chdir)
 ```
 
 ## Arrays
+
 ```{r}
 a <- np_array(c(1:10), order = "C")
 a
 ```
+
 ```{r}
 datos <- iris
 #en esta linea aun estamos en R
@@ -91,7 +93,6 @@ head(datos)
 ## si quiero utilizar el dataset de los datos en python entonces desde la chunk de R pasamos los datos a python
 datos_py <- r_to_py(datos)
 ```
-
 
 ```{python}
 #ahora dentro de una chunk de python  utilizamos r. para acceder a #cualquier funcion metodo variable clase de R hayas exportado a python #atravez de la funcion r_to_py
@@ -105,7 +106,96 @@ r.datos_py.head()
 
 ```
 
+```{r}
+library(Matrix)
+N <- 6
+set.seed(123)
+sparse_mat <- sparseMatrix(
+  i=sample(N,N, replace = F),
+  j=sample(N,N, replace = F),
+  x=runif(N),
+  dims = c(N,N)
+)
+sparse_mat
+#pasamos la variable a python
+sparse_mat_py <- r_to_py(sparse_mat)
 
+```
+
+```{python}
+r.sparse_mat_py
+```
+
+```{r}
+#ahora pasamos esa variable a R
+py_to_r(sparse_mat_py)
+```
+```{r}
+c(123)
+rep("Mates",7)
+
+```
+```{r}
+#repetir tu a;o de nacimiento 10 veces y guardarlo en un vector
+
+
+ano_nacimiento <- rep("2000",10)
+ano_nacimiento
+```
+```{r}
+#Crear vector que tenga como entradas 16,0,1,20,1,7,88,5,1,9 llamarlo vec y modificar la cuarta entrada con fix
+vec <-c(16,0,1,20,1,7,88,5,1,9)
+vec
+fix(vec)
+```
+
+```{r}
+#scan(what = "caracter")
+rep(c(2,4,6),3)
+```
+```{r}
+#Progresiones y Secuencias
+
+# una progesion aritmetica es una sucesion de numeros tales que la diferencia d, de cualquier para de terminos sucesivos de la secuencia es constante
+#empieza en a, acaba en b, y con diferencia d
+#seq(a,b,by=d)
+
+seq(5, 60, by=5)
+seq(100, 6, by= -9)
+#desde 4 hasta 35 , con 7 elementos, calcula la progresion aritmetica
+seq(4, 35, length.out=7)
+
+#secuencia que empieza en 4, 7 elementos en el vetor y que la diferencia by = sea saltos de 3 en 3
+seq(4, length.out =7 ,by=3) 
+
+#genera una secuencia de numeros desde a hasta b
+1:10
+30:-6
+-2:5
+```
+
+
+```{r}
+#imprimir los numeros del 1 al 20
+1:20
+
+#imprimir los 20 primeros numeros pares
+seq(0,20, by=2)
+
+#imprimir 30 numeros equidistantes entre 17 y el 98, mostrando solo 4 cifras significativas
+seq(17,98, length.out = 30)
+```
+```{r}
+# c = concatenar , rep = repetir el pi 5 veces, con la secuencia que va desde 5 a 10 y con el numero -7 es decir le a;adimos un numero 7
+
+c(rep(pi,5),5:10, -7)
+
+# podria guardarlo en varible x
+ x<- c(rep(pi,5),5:10, -7)
+ 
+ c(0,x,10,20)
+
+```
 
 
 
