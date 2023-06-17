@@ -1,0 +1,72 @@
+---
+title: "Factor"
+author: "os"
+date: "2023-06-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## factor
+# es como un vector , pero mas rico, permite usarlo para clasificar # observaciones.
+# para definir un factor debemos definir un vector y tranformalo a factor
+
+```{r}
+nombres=c("Juan","Antonio","Ricardo","Juan","Juan","Maria","Maria")
+nombres.factor = factor(nombres)
+nombres.factor
+
+# genero
+gender=c("M","H","H","M","M","M","M","H","H")
+gender.fact=factor(gender)
+gender.fact
+
+gender.fact2=as.factor(gender)
+gender.fact2
+
+# si quisiera usar 3 etiquetas para hombre mujer y bisexo
+gender.fact3=factor(gender,levels=c("M","H","B"))
+gender.fact3
+
+
+#ahora defino etiquetas para cada nivel
+gender.fact4=factor(gender,levels = c("M","H","B"),labels=c("Mujer","Hombre","hermafrodita"))
+gender.fact4
+levels(gender.fact4)
+#cambiar los niveles de gender.fact4
+levels(gender.fact4)=c("Femenino","Masculino","Hibrido")
+gender.fact4
+
+```
+```{r ejemplo con notas}
+
+#niveles en notas
+notas=c(1,4,3,2,3,2,4,3,1,2,3,4,2,3,4)
+notas
+notas.factor = factor(notas)
+notas.factor
+levels(notas.factor)
+
+#ahora ponemos etiquetas a los niveles
+levels(notas.factor) = c("reprobado","insuficiente","bueno","sobresaliente")
+levels(notas.factor)
+notas.factor
+
+#ahora vamos a grupar, lo que sacan de 1 a 2 suspendido , de 3a4 aprobado
+levels(notas.factor)=c("Suspendido","Suspendido","Aprobado","Aprobado")
+notas.factor
+
+```
+
+```{r Factor Ordenado}
+#Factor donde los niveles siguen un orden
+
+ordered(notas, labels = c("Susp","Aprob","Notab","Excele"))
+
+```
+
+
+
+

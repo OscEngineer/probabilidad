@@ -1,0 +1,121 @@
+---
+title: "SubvectoresyFiltros"
+author: "os"
+date: "2023-06-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Subvectores y Filtros
+```{r}
+```
+
+
+```{r}
+# secuencia desde 4 hasta 50 con saltos de 3.5
+x=seq(3,50, by=3.5)
+x
+
+# tercera entrada del vector x[]
+x[3]
+x[8]
+
+# que hay en la ultima posicion
+x[length(x)]
+# que hay en la penultima
+x[length(x)-1]
+
+# para elimunar la tercera posicion
+x[-3]
+
+# solo los elementos del 4 al 8
+x[4:8]
+x[8:4]
+
+# para que me de solo los que estan en posicion par
+x[seq(2, length(x), by =2)]
+
+# ahora los de indice impar
+x[seq(1, length(x), by =2)]
+
+# ahora eliminar los de indice impar
+x[-seq(1, length(x), by =2)]
+
+# seleccionarr desde la -3 hasta la ultima
+x[(length(x)-3): length(x)]
+
+# filtrar para que me de las posiciones 1,5 y 6
+x[c(1,5,6)]
+
+
+# de x dame las series mas grandes que 30
+x[x>30]
+
+# los mayores que 20 y menores de 40
+x[x>20 & x<40]
+
+# x diferente de 3 y diferente de 17, entonces quita esos numero
+x[x!=3 & x!=17]
+
+#numeros mas peque;os que 10 o mas grandes que 40
+x[x<10|x>40]
+
+x[x>=10]
+x[x>10]
+```
+
+```{r}
+# ver los numero pares dentro del vector
+x
+x[x%%2==0]
+
+#ver los numeros impares, los cuales son cuando divides por 2 queda resto 1
+x[x%%2==1]
+
+# si ponemos x<30 R lo que hace es definir dentro del vector la palabra TRUE o False segun se cumpla la condicion o no
+x>30
+# para extraer la entrasdas de los numeros
+x[x>30]
+```
+```{r}
+x=c(2,7,9,0,2,4,8,9,2,9,0)
+y=c(5,2,-3,-7,-1,4,-2,7,1,4,7,1)
+x[y>0]
+```
+
+```{r}
+# los siguientes diran la posicion en el vector de los elementos que cumplan la condicion ejemplos
+x
+which(x>4)
+# por lo tanto para acceder a lo elemento deberia hacer
+x[which(x>4)]
+
+# los que estan enre 2 y 8 "ojo que me da solo la posicion donde se encuentran"
+which(x>2 & x<8)
+
+# los que son menores que 5 o son pares "ojo que me da solo la posicion donde se encuentran"
+which(x<5 | x%%2==0)
+# cuales son esos numeros
+x[which(x<5 | x%%2==0)]
+
+# obtener  la posicion donde esta el elemento mas pequeño
+which.min(x)
+
+# si ubiese mas de 1 entonces hariamos lo sigueinte para que nos ubique todos
+which((x==min(x)))
+#ahora el maximo ubica la primera aparicion del elemento mas grande (el maximo)
+which.max(x)
+
+# para ubicar todos los valores que sean el numero mas alto
+which(x==max(x))
+# en R cuando devuelove un vector vacio "numeric(0)"
+x[x>4 & x<7]
+
+z=c(x,2,y,7)
+z
+```
+
+

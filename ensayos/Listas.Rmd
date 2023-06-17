@@ -1,0 +1,17 @@
+---
+title: "Listas"
+author: "os"
+date: "2023-06-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Listas: formadas por diferentes objetos, pueden ser de diferente tipo
+```{r}
+
+```
+
+

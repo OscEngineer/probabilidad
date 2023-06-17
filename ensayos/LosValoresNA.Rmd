@@ -1,0 +1,89 @@
+---
+title: "Los valores NA"
+author: "os"
+date: "2023-06-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r }
+2^pi >pi^2
+2^pi
+pi^2
+
+length(1:100) > 4
+
+
+#creo un vector de 10 elementos del 1 al 10
+x=1:10
+# pregunto por el valor de x en la posicion 3
+x[3]
+
+#ahora asigno el valor de 40 a la posicion 3
+x[3]=40
+x
+#si intento acceder a la posicion numero 11 dice NA "no disponible"
+x[11]
+# entonces voy a anadir un nuevo elemento en la posicion 11
+x[11]=15
+
+# en las posiciones de la 2 a la 5, a cada elemento le sumamos 3
+x[2:5] = x[2:5] +3
+x
+
+# poner un 0 en las dos ultimas posiciones del vector
+x[(length(x)-2):length(x)] = 0
+x
+
+# anadir un elemento al vector en una posicion 5 elementos adelante que no existen
+
+x[length(x)+5]=9
+x
+# entonces al tener valor NA dentro del vector como puedo calcular una media
+mean(x)
+mean(x, na.rm = TRUE)
+```
+```{r}
+# me devuelve los indices en los cuales haya NA 
+is.na(x)
+# en que posiciones tenermos valores NA
+which(is.na(x))
+
+# en estadistica se tiende a cambiar los valores NA por la media
+y=x
+y[is.na(y)]
+y[is.na(y)] = mean(y, na.rm=TRUE)
+
+
+# para devolver solo los numero que no son NA
+x[!is.na(x)]
+# puedo sumar omitiendo los NA
+sum(x[!is.na(x)])
+
+# cumsum(x,na.rm = TRUE) cum sum no admite valores NA, entonces hacemos
+cumsum(x[!is.na(x)])
+# tambien puedo usar la funcion para omitir valores NA
+na.omit(x)
+
+sum(na.omit(x))
+```
+```{r}
+# x limpio de NA
+x_clean = na.omit(x)
+x_clean
+#ahora voy a quitar ese attr de la impresion "atributo"
+attr(x_clean,"na.action") = NULL
+x_clean
+# tambien puedo limpiar el class
+attr(x_clean, "class") = NULL
+x_clean
+```
+
+
+
+

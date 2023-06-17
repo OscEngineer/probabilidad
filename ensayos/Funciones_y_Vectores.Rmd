@@ -29,6 +29,12 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
+## Basico
+c()     para definir un vector
+scan()  para definir un vector
+fix()   para modificar visualmente el vector $x$
+rep(1,n) para definir un vector constante que contiene el dato $a$ repetido $n$ veces
+
 ```{r}
 # aplicar una funcion a un vector
 ```
@@ -54,5 +60,105 @@ sapply(x,FUN = function(elemento){sqrt(elemento)})
 cd =function(x){ summary(lm((1:4)~c(1:3,x)))$r.squared}
 #cd(4)
 cd(5)
+cd(6)
+cd(7)
+#si quiero hacer la funcion cd en un vector entonces ..
+#forma erronea
+#cd(x)
+
+#forma correcta usamos la funcion sapply para poder aplicar la funcion cd() a cada elemento del vector
+sapply(x, FUN = cd)
+
+#suma cada elemento del vector con cada elemento del mismo vector 1 a 1
+1:10 + 1:10
+(1:10)*(1:10)
+(1:10)^(1:10)
 ```
+```{r}
+# calcular los 100 primeros numeros de la siguiente ecuacion
+n=1:100
+2*3^(n/2)-15
+
+# calculando un limite
+y=n^2/(n^2+1)
+```
+```{r}
+# funcion de f(x)= x^2
+cuadrado = function(x) {x^2}
+v= c(1,2,3,4,5,6)
+sapply(v, FUN = cuadrado)
+
+#ahora aplicacion la media (funcin mean)
+mean(v)
+
+#acomulado de suma de el elemento anterior mas el siguiente
+cumsum(v)
+
+#sort ordena el vector en orden alfebetico o numerico
+v=c(1,7,5,2,4,6,3)
+sort(v)
+
+# funcion para invertir los elementos del vector
+rev(v)
+```
+
+
+```{r ejercicios}
+
+# combinar funciones sort y rev para crear una funcion que dado un vector x , lo  devuelva ordenado en orden decreciente
+
+orden_decreciente = function(x){rev(sort(x))}
+
+vector = c(2,5,40,30,20)
+resultado = orden_decreciente(vector)
+print(resultado)
+
+```
+
+```{r}
+x= 1:10
+# lonfigut del vector x
+length(x)
+# el mas grande
+max(x)
+
+# el mas peque;o
+min(x)
+# la suma de los elemnetos del vector
+sum(x)
+# el producto de los elementos
+prod(x)
+
+# la media se puede hacer de dos maneras, manera 1
+mean(x)
+# la media manera 2
+sum(x)/length(x)
+
+# sumas acomuladas
+cumsum(x)
+# el mas grande encontrado hasta el momento
+cummax(x)
+
+# el mas peque;o encontrado hasta el momento
+cummin(x)
+
+
+# productos acomulados
+cumprod(x)
+
+# hace las restas del vector
+diff(x)
+
+# diferencia de las sumas acomuladas
+diff(cumsum(x))
+
+# ordena el vector
+sort(x)
+# invierte el vector
+rev(x)
+#ordena en orden decreciente
+sort(x, decreasing = TRUE)
+
+```
+
 
