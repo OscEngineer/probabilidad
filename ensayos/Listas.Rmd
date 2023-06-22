@@ -12,6 +12,53 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Listas: formadas por diferentes objetos, pueden ser de diferente tipo
 ```{r}
 
+x=c(1,5,-2,6,-7,8,-3,4,-9)
+
+L=list(nombre="temperaturas",datos=x,media=mean(x),sumas=cumsum(x))
+L
+
+#acceder a un dato de la lista
+
+L$media
+L$datos
+L$nombre
+#acceder ala tercera componente
+L[[3]]
+L[3]
+
+#al usar solo un corchete se reconoce como lista y no se pueden usar operadores, al usar doble [[]] se reconoce como vector y se pueden hacer operaciones
+
+# str(list) : conocer la estructura de la lista
+#names(list) : saber los nombres de la lista
+
+names(L)
+str(L)
 ```
+
+```{r Matrices}
+# nrow = numero de filas, byrow= si es True, se construye por filas, si no se contruye por columnas
+#ncol = numero de columnas
+M=matrix(1:12,nrow=4)
+M
+m2=matrix(1:12,nrow=4,byrow=T)
+m2
+
+# introducir el mismo numero en la matriz
+matrix(1,nrow=4,ncol=6)
+
+
+#AÑADIMOS dos filas a la matriz
+rbind(M,c(1,2,3),c(-1,-2,-3))
+
+# diag crea la diagonal del vector
+diag(c(1,2,3,4))
+
+diag(5,nrow = 3)
+M[2,3]
+
+#definimos una submatriz de la matrix original
+# M[c(2,3,5),1:2]
+```
+
 
 
